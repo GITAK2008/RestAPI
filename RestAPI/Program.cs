@@ -43,6 +43,7 @@ builder.Services.AddSingleton<IMemoryCache>(new MemoryCache(new MemoryCacheOptio
 builder.Services.AddDbContext<FirstDbContext>(opt=>opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 builder.Services.AddScoped<ICommonService<Service, int>, ServicesService>();
+builder.Services.AddScoped<AuthService, AuthService>();
 builder.Services.AddCors();
 builder.Services.AddResponseCaching();
 var app = builder.Build();
