@@ -10,6 +10,7 @@ namespace RestAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class AutorizeController : ControllerBase
     {
         private readonly AuthService service;
