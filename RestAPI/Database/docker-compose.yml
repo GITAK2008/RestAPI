@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: library-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: LibraryDB
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: DB_PASSWORD
+    ports:
+      - "5433:5432"
+    volumes:
+      - library_postgres_data:/var/lib/postgresql/data
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d LibraryDB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  library_postgres_data:

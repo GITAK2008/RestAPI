@@ -1,0 +1,19 @@
+@RestAPI_HostAddress = http://localhost:5251
+
+### Авторизация: получение JWT-токена (тестовый пользователь admin / admin123)
+POST {{RestAPI_HostAddress}}/api/Autorize/login
+Content-Type: application/json
+
+{
+  "login": "admin",
+  "password": "admin123"
+}
+
+### Регистрация нового пользователя
+POST {{RestAPI_HostAddress}}/api/Autorize/register
+Content-Type: application/json
+
+{
+  "login": "reader",
+  "password": "reader123"
+}
